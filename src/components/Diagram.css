@@ -1,0 +1,9 @@
+.diagram-component {
+  width: 95%;
+  height: 550px;
+  border: 1px solid black;
+}
+
+html, body, #app, #app>div {
+  height: 100%
+}
