@@ -22,11 +22,16 @@ export class SelectionInspector extends React.PureComponent<SelectionInspectorPr
     const dets = [];
     for (const k in selObj) {
       const val = selObj[k];
-      const row = <InspectorRow
-                    key={k}
-                    id={k}
-                    value={val}
-                    onInputChange={this.props.onInputChange} />;
+      var row;
+      if (k=="githubUrl") {
+        row = <a href={val} target="_blank">Code</a>;
+      } else {
+        row = <InspectorRow
+                      key={k}
+                      id={k}
+                      value={val}
+                      onInputChange={this.props.onInputChange} />;
+      }
       if (k === 'key') {
         dets.unshift(row); // key always at start
       } else {
