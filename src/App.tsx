@@ -95,14 +95,18 @@ class App extends React.Component<{}, AppState> {
                 const idx = this.mapNodeKeyIdx.get(sel.key);
                 if (idx !== undefined && idx >= 0) {
                   const nd = draft.nodeDataArray[idx];
-                  draft.selectedData = nd; // DEBUG
-                  //draft.selectedData = { name: nd.text, type: nd.type };
+                  //draft.selectedData = nd; // DEBUG
+                  draft.selectedData = { name: nd.text, type: nd.category };
+                  if ("githubUrl" in nd) {
+                    draft.selectedData['githubUrl'] = nd.githubUrl;
+                  }
                 }
               } else if (sel instanceof go.Link) {
                 const idx = this.mapLinkKeyIdx.get(sel.key);
                 if (idx !== undefined && idx >= 0) {
                   const ld = draft.linkDataArray[idx];
-                  draft.selectedData = ld;
+                  //draft.selectedData = ld; // DEBUG
+                  draft.selectedData = { type: ld.category, to: ld.to, from: ld.from };
                 }
               }
             } else {
